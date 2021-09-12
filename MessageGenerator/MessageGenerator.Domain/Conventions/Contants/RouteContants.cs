@@ -2,6 +2,8 @@
 {
     public class RouteContants
     {
-        public const string ApiControllerRoute = "api/[controller]/[action]";
+        public const string IdParameterRoute = "{id}";
+
+        public const string ApiControllerRoute = "api/[controller]";
     }
 }

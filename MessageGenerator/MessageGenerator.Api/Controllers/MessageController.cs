@@ -19,7 +19,7 @@ namespace MessageGenerator.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ChatMessageModel>>> List(CancellationToken cancellationToken)
+        public async Task<ActionResult<List<ChatMessageModel>>> Get(CancellationToken cancellationToken)
         {
             var query = new GetListQuery<Message, ChatMessageModel>();
             var result = await mediator.Send(query, cancellationToken);

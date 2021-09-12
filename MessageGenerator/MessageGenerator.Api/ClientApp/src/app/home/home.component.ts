@@ -16,9 +16,9 @@ export class HomeComponent {
     this.client = client;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.startConnection();
     this.loadMessages();
-    this.startConnection();
   }
 
   get sortedMessages () {
@@ -30,11 +30,11 @@ export class HomeComponent {
       .withUrl("/signalr/messages")
       .build();
 
-    await this.connection.start();
     this.connection.on("SendMessage", x => this.messages.push(x))
+    return this.connection.start();
   }
 
   loadMessages () {
-    this.client.list().subscribe(x => this.messages = x)
+    this.client.list().subscribe(x => this.messages = x);
   }
 }
